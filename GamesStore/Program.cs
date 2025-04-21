@@ -1,4 +1,4 @@
-namespace GamesStore
+namespace GamesStore.Api
 {
     public class Program
     {

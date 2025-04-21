@@ -1,0 +1,12 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+GET http://localhost:5292/games/2
+
+###
+POST http://localhost:5292/games/
+Content-Type: application/json
+{
+  "name": "Minecraft",
+  "genre": "sandobox",
+  "price": 100,
+  "releaseDate": "2011-05-05"
+}

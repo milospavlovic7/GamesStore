@@ -1,5 +1,5 @@
-using GamesStore.Api.Data;
-using GameStore.Api.ApiEndpoints;
+using GameStore.Api.Data;
+using GameStore.Api.Endpoints;
 
 namespace GamesStore.Api
 {
@@ -15,9 +15,12 @@ namespace GamesStore.Api
             var app = builder.Build();
 
             app.MapGamesEndpoints();
-            app.MigrateDb();
+            app.MapGenresEndpoints();
+
+            await app.MigrateDbAsync();
 
             app.Run();
+
         }
     }
 }

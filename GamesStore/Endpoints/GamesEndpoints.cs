@@ -1,10 +1,10 @@
 ﻿using GameStore.Api.Data;
-using GameStore.Api.DTOs;
+using GameStore.Api.Dtos;
 using GameStore.Api.Entities;
 using GameStore.Api.Mapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace GameStore.Api.ApiEndpoints;
+namespace GameStore.Api.Endpoints;
 
 public static class GamesEndpoints
 {
@@ -16,7 +16,7 @@ public static class GamesEndpoints
                        .WithParameterValidation();
 
         // GET /games
-        group.MapGet("/", async (GameStoreContext dbContext) =>
+        group.MapGet("/", async (GameStoreContext dbContext) => 
             await dbContext.Games
                      .Include(game => game.Genre)
                      .Select(game => game.ToGameSummaryDto())
@@ -28,7 +28,7 @@ public static class GamesEndpoints
         {
             Game? game = await dbContext.Games.FindAsync(id);
 
-            return game is null ?
+            return game is null ? 
                 Results.NotFound() : Results.Ok(game.ToGameDetailsDto());
         })
         .WithName(GetGameEndpointName);
@@ -42,8 +42,8 @@ public static class GamesEndpoints
             await dbContext.SaveChangesAsync();
 
             return Results.CreatedAtRoute(
-                GetGameEndpointName,
-                new { id = game.Id },
+                GetGameEndpointName, 
+                new { id = game.Id }, 
                 game.ToGameDetailsDto());
         });
 

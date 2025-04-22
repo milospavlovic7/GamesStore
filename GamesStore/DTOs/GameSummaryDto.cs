@@ -1,4 +1,5 @@
-﻿namespace GameStore.Api.DTOs;
+﻿namespace GameStore.Api.Dtos;
+
 public record class GameSummaryDto(
     int Id, 
     string Name, 
